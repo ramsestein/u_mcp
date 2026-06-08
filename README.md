@@ -109,23 +109,23 @@ uMCP implements a dual-plane architecture maintaining two simultaneous represent
 ```mermaid
 flowchart TB
     subgraph REAL["REAL PLANE (User)"]
-        U[User] --> MI[Message Interceptor]
+        U["User"] --> MI["Message Interceptor"]
         MI -->|anonymize| LLM
         LLM -->|deanonymize| U
     end
 
     subgraph ANON["ANONYMIZED PLANE (LLM)"]
-        LLM[LLM / Agent AI]
-        LLM --> RP[Resource Context Pipeline]
-        LLM --> TD[Tool Dispatcher]
-        TD -->|secure| SD[Deanonymize Args<br/>Execute Tool<br/>Re-anonymize Response]
-        TD -->|insecure| ID[All Data stays<br/>Anonymized]
+        LLM["LLM / Agent AI"]
+        LLM --> RP["Resource Context Pipeline"]
+        LLM --> TD["Tool Dispatcher"]
+        TD -->|secure| SD["Deanonymize args + Re-anonymize response"]
+        TD -->|insecure| ID["All data anonymized"]
     end
 
     subgraph SHARED["SHARED INFRASTRUCTURE"]
-        PIPE[Anonymization Pipeline<br/>Regex -> Aho-Corasick -> BERT -> Vault]
-        AUDIT[Blockchain-like Audit Chain<br/>SHA-256 + HMAC]
-        PRIV[Privacy Layer<br/>AES-256-GCM + k-anonymity]
+        PIPE["Anonymization Pipeline: Regex, Aho-Corasick, BERT, Vault"]
+        AUDIT["Blockchain-like Audit Chain: SHA-256 + HMAC"]
+        PRIV["Privacy Layer: AES-256-GCM + k-anonymity"]
     end
 
     MI --> PIPE
@@ -152,40 +152,40 @@ The framework is organized into seven architectural layers:
 ```mermaid
 flowchart LR
     subgraph CORE["core/"]
-        GATE[Gateway<br/>FastMCP Server/Client]
+        GATE["Gateway: FastMCP Server/Client"]
     end
 
     subgraph SEC["security/"]
-        AUTH[Auth<br/>3 API Keys]
-        POL[Policies<br/>Allow/Deny + RBAC]
+        AUTH["Auth: 3 API Keys"]
+        POL["Policies: Allow/Deny + RBAC"]
     end
 
     subgraph ANON["anonymization/"]
-        DET[Detectors<br/>Regex + Aho-Corasick + BERT]
-        ENS[Ensemble Fusion]
-        WL[Whitelist Filter]
-        DP[Date Preserver]
-        VT[Vault SQLite<br/>AES-256-GCM]
-        SUB[Substitutor]
+        DET["Detectors: Regex + Aho-Corasick + BERT"]
+        ENS["Ensemble Fusion"]
+        WL["Whitelist Filter"]
+        DP["Date Preserver"]
+        VT["Vault SQLite: AES-256-GCM"]
+        SUB["Substitutor"]
     end
 
     subgraph LAYERS["layers/"]
-        MI[Message Interceptor]
-        RP[Resource Pipeline]
-        TD[Tool Dispatcher]
+        MI["Message Interceptor"]
+        RP["Resource Pipeline"]
+        TD["Tool Dispatcher"]
     end
 
-    subgraph AUDIT["audit/"]
-        HC[Hash Chain<br/>SHA-256 + HMAC]
-        CV[Cross Validator]
-        API[Audit REST API]
+    subgraph AUD["audit/"]
+        HC["Hash Chain: SHA-256 + HMAC"]
+        CV["Cross Validator"]
+        API["Audit REST API"]
     end
 
     subgraph PRIV["privacy/"]
-        ENC[Encryption]
-        RET[Retention<br/>TTL + Secure Wipe]
-        KAN[k-anonymity]
-        BR[Breach Response]
+        ENC["Encryption"]
+        RET["Retention: TTL + Wipe"]
+        KAN["k-anonymity"]
+        BR["Breach Response"]
     end
 
     CORE --> AUTH
@@ -237,39 +237,37 @@ Each event contains: event_id, timestamp, event_type, actor_id, previous_hash (S
 ```mermaid
 flowchart TB
     subgraph INGRESS["INGRESS"]
-        REQ[Request] --> AUTH[Auth Layer<br/>3 API Keys]
+        REQ["Request"] --> AUTH["Auth Layer: 3 API Keys"]
     end
 
     subgraph POLICY["POLICY ENFORCEMENT"]
-        AUTH -->|role: gateway| POL[Policy Engine]
-        POL --> SWL[Server Allowlisting]
-        POL --> TDL[Tool Deny/Allow Lists]
-        POL --> RBAC[RBAC<br/>per (role, server, tool)]
+        AUTH --> POL["Policy Engine"]
+        POL --> SWL["Server Allowlisting"]
+        POL --> TDL["Tool Deny/Allow Lists"]
+        POL --> RBAC["RBAC: per role, server, tool"]
     end
 
     subgraph PROCESS["PROCESSING"]
-        POL --> PIP[Anonymization Pipeline<br/>9-stage detection]
-        PIP --> WH[Whitelist Filter<br/>120+ clinical terms]
-        PIP --> DP[Date Preserver<br/>all dates preserved]
-        PIP --> VT[Encrypted Vault<br/>AES-256-GCM at rest]
+        POL --> PIP["Anonymization Pipeline: 9-stage detection"]
+        PIP --> WH["Whitelist Filter: 120+ clinical terms"]
+        PIP --> DP["Date Preserver: all dates preserved"]
+        PIP --> VT["Encrypted Vault: AES-256-GCM at rest"]
     end
 
     subgraph OUTPUT["OUTPUT & AUDIT"]
-        VT --> DISP[Tool Dispatcher]
-        DISP -->|secure| SEC[Deanonymize args<br/>Re-anonymize response]
-        DISP -->|insecure| INS[All data anonymized]
-
-        VT --> KAN[k-anonymity Check<br/>detect / block mode]
-        KAN -->|fail in block mode| BLOCK[Exception raised]
-
-        DISP --> AUDIT[Audit Chain<br/>Append-only SQLite]
+        VT --> DISP["Tool Dispatcher"]
+        DISP -->|secure| SEC["Deanonymize + Re-anonymize"]
+        DISP -->|insecure| INS["All data anonymized"]
+        VT --> KAN["k-anonymity: detect or block"]
+        KAN -->|fail in block| BLOCK["Exception raised"]
+        DISP --> AUDIT["Audit Chain: Append-only SQLite"]
         KAN --> AUDIT
     end
 
-    subgraph PRIVACY["PRIVACY (cross-cutting)"]
-        ENC[Encryption<br/>AES-256-GCM]
-        RET[Retention<br/>TTL + Secure Wipe]
-        BREACH[Breach Detection]
+    subgraph PRIVACY["PRIVACY cross-cutting"]
+        ENC["Encryption: AES-256-GCM"]
+        RET["Retention: TTL + Secure Wipe"]
+        BREACH["Breach Detection"]
     end
 
     ENC -.->|encrypts| VT
