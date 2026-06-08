@@ -6,7 +6,7 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](pyproject.toml)
 ![Tests](https://img.shields.io/badge/tests-228%20passed-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-86%25-brightgreen)
-[![DOI](https://img.shields.io/badge/DOI-XXXXXX-blue)](https://doi.org/XXXX)
+[![DOI](https://img.shields.io/badge/DOI-10.5281/zenodo.20588797-blue)]([https://doi.org/XXXX](https://doi.org/10.5281/zenodo.20588797))
 
 ---
 
@@ -355,9 +355,9 @@ pytest --cov=src/umcp --cov-report=term
 @article{umcp2026,
   title   = {uMCP: A Privacy-Preserving Security Framework for AI Agents on the Model Context Protocol},
   author  = {Marrero, R.},
-  journal = 
+  journal = Zenodo
   year    = {2026},
-  doi     = 
+  doi     = 10.5281/zenodo.20588797
 }
 ```
 
