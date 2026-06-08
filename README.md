@@ -38,7 +38,7 @@ uMCP bridges this gap by providing a complete, production-ready framework that i
 |---|---------------------------|-------|
 | C1 | Current code version | v0.1.0 |
 | C2 | Permanent link to code/repository | https://github.com/ramsestein/u_mcp |
-| C3 | Permanent link to Reproducible Capsule | |
+| C3 | Permanent link to Reproducible Capsule | https://zenodo.org/records/20588797?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjJlMjBmZTkzLTg1ODEtNDI4ZC04MWZhLWMwZWI2M2ZiZjI1ZSIsImRhdGEiOnt9LCJyYW5kb20iOiI1ZDUyMWQzOGZmNjAwYWZmMzhkNDY4OWNkMjIwZmNlZSJ9.hdLgC-SADuF-CQ2oeOuDJAr1nvyK_MuMbWh6ly6sho-Ty4C8yDmeZN7yp5I7txTQ6wUnw6pLz8wMulRdVA4Tww|
 | C4 | Legal Code License | MIT |
 | C5 | Code versioning system used | git |
 | C6 | Software code languages, tools, and services used | Python 3.11-3.12 |
