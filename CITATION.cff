@@ -9,8 +9,8 @@ authors:
     orcid: "https://orcid.org/0000-0000-0000-0000"   # <-- replace with your ORCID
     affiliation: "Hospital Clínic de Barcelona, Spain"
 version: "0.1.0"
-date-released: "2026-06-08"            # <-- set to your Zenodo release date (YYYY-MM-DD)
-doi: "10.5281/zenodo.XXXXXXX"          # <-- replace with your Zenodo DOI
+date-released: "2026-06-08"          
+doi: "10.5281/zenodo.20588797"          
 license: MIT
 repository-code: "https://github.com/ramsestein/u_mcp"
 url: "https://github.com/ramsestein/u_mcp"
