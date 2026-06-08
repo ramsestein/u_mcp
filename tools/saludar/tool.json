@@ -1,0 +1,29 @@
+{
+  "name": "saludar",
+  "version": "1.0.0",
+  "description": "Saluda a una persona por su nombre. Tool de demostración.",
+  "security": "insecure",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "nombre": {
+        "type": "string",
+        "description": "Nombre de la persona a saludar"
+      }
+    },
+    "required": ["nombre"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "mensaje": {
+        "type": "string",
+        "description": "Saludo personalizado"
+      }
+    }
+  },
+  "examples": [
+    {"nombre": "Juan", "resultado": {"mensaje": "¡Hola, Juan! Bienvenido al sistema."}},
+    {"nombre": "María", "resultado": {"mensaje": "¡Hola, María! Bienvenido al sistema."}}
+  ]
+}

@@ -1,0 +1,57 @@
+# PALABRAS CLÍNICAS COMUNES — nunca se indexan como entidades (falsos positivos)
+# Solo aplica a variaciones DERIVADAS (es_original=0 en CSV).
+# Una por línea. Case-insensitive.
+# Líneas con # son comentarios.
+
+agudo
+aguda
+dolor
+dolores
+dolors
+días
+dias
+dia
+dies
+nora
+pero
+pere
+post
+aula
+buen
+toma
+minuto
+min
+oral
+orales
+años
+año
+vida
+vive
+alarma
+abdomen
+abd
+rota
+dura
+media
+cara
+caso
+gota
+coma
+tto
+ayer
+venosa
+figura
+menos
+gas
+agua
+herida
+vaso
+cosa
+roce
+grado
+era
+coca
+mama
+banco
+navajas
+vasos

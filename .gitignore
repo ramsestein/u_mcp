@@ -1,0 +1,56 @@
+# uMCP — .gitignore
+# Project root: mcp_proyect/  (this is the standalone repo)
+
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.so
+
+# ── Virtual environments ─────────────────────────────────────────────────
+.venv/
+venv/
+env/
+.conda/
+
+# ── IDE / Editor ─────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# ── Model weights (downloaded via script, not committed) ────────────────
+models/
+
+# ── Runtime data (SQLite vaults, audit chains, temp files) ──────────────
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# ── Coverage reports ─────────────────────────────────────────────────────
+htmlcov/
+.coverage
+.coverage.*
+cov_annotate/
+
+# ── Logs ─────────────────────────────────────────────────────────────────
+*.log
+logs/
+# Coverage annotated files
+*.py,cover
+*.cover
+.coverage
+cov_annotate/
+htmlcov/

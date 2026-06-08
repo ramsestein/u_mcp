@@ -1,0 +1,1 @@
+"""CLI — Administration command-line interface."""

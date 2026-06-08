@@ -1,0 +1,59 @@
+version: "3.9"
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      UMCP__AUTH__GATEWAY_KEY: "${UMCP_GATEWAY_KEY:-dev-gateway-key}"
+      UMCP__AUTH__ADMIN_KEY: "${UMCP_ADMIN_KEY:-dev-admin-key}"
+      UMCP__AUTH__AUDIT_KEY: "${UMCP_AUDIT_KEY:-dev-audit-key}"
+      UMCP__ENCRYPTION__VAULT_KEY: "${UMCP_VAULT_KEY:-dev-vault-key-32bytes-long!!}"
+      UMCP__ENCRYPTION__AUDIT_KEY: "${UMCP_AUDIT_ENCRYPTION_KEY:-dev-audit-key-32bytes-long!}"
+      UMCP__REDIS__URL: "redis://redis:6379/0"
+    volumes:
+      - gateway_data:/data
+    depends_on:
+      redis:
+        condition: service_started
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./docker/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=${GRAFANA_PASSWORD:-admin}
+    volumes:
+      - ./docker/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./docker/grafana/datasources:/etc/grafana/provisioning/datasources
+      - grafana_data:/var/lib/grafana
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  gateway_data:
+  redis_data:
+  prometheus_data:
+  grafana_data:

@@ -1,0 +1,27 @@
+{
+  "name": "consultar_paciente",
+  "version": "1.0.0",
+  "description": "Consulta los datos de un paciente por su NHC. Requiere acceso a datos reales.",
+  "security": "secure",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "nhc": {
+        "type": "string",
+        "description": "Número de Historia Clínica del paciente"
+      }
+    },
+    "required": ["nhc"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "nombre": {"type": "string"},
+      "edad": {"type": "integer"},
+      "diagnostico": {"type": "string"}
+    }
+  },
+  "examples": [
+    {"nhc": "NHC_ABCD", "resultado": {"nombre": "PACIENTE_1A2B", "edad": 45, "diagnostico": "Hipertensión"}}
+  ]
+}

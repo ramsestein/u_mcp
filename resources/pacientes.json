@@ -1,0 +1,47 @@
+[
+  {
+    "nhc": "NHC_ABCD",
+    "nombre": "PACIENTE_1A2B",
+    "edad": 45,
+    "genero": "M",
+    "diagnostico": "Hipertensión arterial",
+    "fecha_ingreso": "15.03.2024",
+    "medicacion": ["Enalapril 10mg", "Hidroclorotiazida 25mg"]
+  },
+  {
+    "nhc": "NHC_EFGH",
+    "nombre": "PACIENTE_3C4D",
+    "edad": 62,
+    "genero": "F",
+    "diagnostico": "Diabetes tipo 2",
+    "fecha_ingreso": "22.01.2024",
+    "medicacion": ["Metformina 850mg", "Sitagliptina 100mg"]
+  },
+  {
+    "nhc": "NHC_IJKL",
+    "nombre": "PACIENTE_5E6F",
+    "edad": 78,
+    "genero": "M",
+    "diagnostico": "Insuficiencia cardíaca crónica",
+    "fecha_ingreso": "10.11.2023",
+    "medicacion": ["Furosemida 40mg", "Bisoprolol 5mg", "Espironolactona 25mg"]
+  },
+  {
+    "nhc": "NHC_MNOP",
+    "nombre": "PACIENTE_7G8H",
+    "edad": 33,
+    "genero": "F",
+    "diagnostico": "Asma bronquial",
+    "fecha_ingreso": "05.06.2024",
+    "medicacion": ["Salbutamol inhalador", "Budesonida 200μg"]
+  },
+  {
+    "nhc": "NHC_QRST",
+    "nombre": "PACIENTE_9I0J",
+    "edad": 55,
+    "genero": "M",
+    "diagnostico": "Artrosis de cadera",
+    "fecha_ingreso": "18.09.2024",
+    "medicacion": ["Ibuprofeno 600mg", "Omeprazol 20mg"]
+  }
+]

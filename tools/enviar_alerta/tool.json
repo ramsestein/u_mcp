@@ -1,0 +1,40 @@
+{
+  "name": "enviar_alerta",
+  "version": "1.0.0",
+  "description": "Envía una alerta a un servicio externo. Los datos viajan siempre anonimizados.",
+  "security": "insecure",
+  "input_schema": {
+    "type": "object",
+    "properties": {
+      "paciente_id": {
+        "type": "string",
+        "description": "Identificador anonimizado del paciente"
+      },
+      "tipo_alerta": {
+        "type": "string",
+        "description": "Tipo de alerta (urgencia, recordatorio, resultado)",
+        "enum": ["urgencia", "recordatorio", "resultado"]
+      },
+      "mensaje": {
+        "type": "string",
+        "description": "Contenido de la alerta"
+      }
+    },
+    "required": ["paciente_id", "tipo_alerta", "mensaje"]
+  },
+  "output_schema": {
+    "type": "object",
+    "properties": {
+      "status": {"type": "string"},
+      "alerta_id": {"type": "string"}
+    }
+  },
+  "examples": [
+    {
+      "paciente_id": "PACIENTE_A7F3",
+      "tipo_alerta": "recordatorio",
+      "mensaje": "Cita médica mañana a las 10:00",
+      "resultado": {"status": "enviada", "alerta_id": "ALT_001"}
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+"""Vault: bidirectional surrogate store (real ↔ anonymized)."""

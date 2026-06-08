@@ -1,0 +1,20 @@
+tipo,valor,es_original
+PERSON,Juan Pérez,1
+PERSON,María García,1
+PERSON,Carlos López,1
+PERSON,Ana Martínez,1
+PERSON,Pedro Sánchez,1
+PERSON,Laura Fernández,1
+PERSON,Dr. González,1
+PERSON,Dr. Rodríguez,1
+PERSON,Dr. López,1
+PERSON,Enfermera Ruiz,1
+PERSON,Enfermera Torres,1
+LOCATION,Hospital Clínic,1
+LOCATION,Hospital Vall d'Hebron,1
+LOCATION,Hospital de la Santa Creu i Sant Pau,1
+LOCATION,CAP La Marina,1
+LOCATION,CAP El Raval,1
+LOCATION,CAP Sants,1
+LOCATION,Consultorio Norte,1
+LOCATION,Consultorio Sur,1

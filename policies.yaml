@@ -1,0 +1,59 @@
+"""Policy configuration example."""
+
+policies:
+  # Server allowlisting — only these URLs can connect
+  allowed_servers:
+    - "https://db.internal:8000/mcp"
+    - "http://localhost:8050/mcp"
+    - "http://api.trusted.com/mcp"
+
+  # Mode: "deny" = deny-list, "allow" = allowlist (deny all except)
+  mode: "deny"
+
+  # Tools always denied (fnmatch patterns)
+  denied_tools:
+    - name: "shell_exec"
+      reason: "RCE risk — direct shell execution"
+    - name: "cmd_exec"
+      reason: "RCE risk"
+    - name: "db:delete_*"
+      reason: "Destructive database operations"
+    - name: "fs:remove_*"
+      reason: "Filesystem modification"
+    - name: "*:exec"
+      reason: "Potential command execution"
+
+  # Tools allowed (only used in allowlist mode)
+  allowed_tools:
+    - name: "paciente:consultar"
+    - name: "paciente:historial"
+    - name: "analitica:resultados"
+    - name: "informe:generar"
+
+  # Tool security classification
+  tool_security:
+    by_default: insecure
+    secure_tools:
+      - name: "paciente:consultar"
+        reason: "Needs real NHC for DB lookup"
+      - name: "paciente:historial"
+        reason: "Requires real patient ID"
+      - name: "analitica:resultados"
+        reason: "Lab results need real identifiers"
+    insecure_tools:
+      - name: "informe:generar"
+        reason: "External service, no PII needed"
+      - name: "alertas:enviar"
+        reason: "Third-party notification service"
+
+  # RBAC permissions
+  permissions:
+    viewer:
+      - server: "*"
+        tool: "paciente:consultar"
+    operator:
+      - server: "*"
+        tool: "*"
+    admin:
+      - server: "*"
+        tool: "*"
