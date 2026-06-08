@@ -1,0 +1,38 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below. Once the SoftwareX article is published, please cite that article (see the commented preferred-citation block)."
+title: "uMCP — Unified MCP Security Framework"
+abstract: "A privacy-preserving security framework for AI agents built on the Model Context Protocol (MCP), providing transparent dual-plane anonymization, a blockchain-like audit trail, and plug-and-play tooling for healthcare, finance, and other regulated domains."
+type: software
+authors:
+  - given-names: "Ramsés"
+    family-names: "Marrero García"
+    orcid: "https://orcid.org/0000-0000-0000-0000"   # <-- replace with your ORCID
+    affiliation: "Hospital Clínic de Barcelona, Spain"
+version: "0.1.0"
+date-released: "2026-06-08"            # <-- set to your Zenodo release date (YYYY-MM-DD)
+doi: "10.5281/zenodo.XXXXXXX"          # <-- replace with your Zenodo DOI
+license: MIT
+repository-code: "https://github.com/ramsestein/u_mcp"
+url: "https://github.com/ramsestein/u_mcp"
+keywords:
+  - "Model Context Protocol"
+  - "anonymization"
+  - "privacy-preserving AI"
+  - "LLM agents"
+  - "audit trail"
+  - "clinical NLP"
+
+# When the SoftwareX article is published, uncomment and complete the block below.
+# GitHub's "Cite this repository" and reference managers will then point to the article.
+#
+# preferred-citation:
+#   type: article
+#   title: "uMCP: A Privacy-Preserving Security Framework for AI Agents on the Model Context Protocol"
+#   authors:
+#     - given-names: "Ramsés"
+#       family-names: "Marrero García"
+#       orcid: "https://orcid.org/0000-0000-0000-0000"
+#       affiliation: "Hospital Clínic de Barcelona, Spain"
+#   journal: "SoftwareX"
+#   year: 2026
+#   doi: "10.1016/j.softx.2026.XXXXXX"
