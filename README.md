@@ -6,7 +6,7 @@
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](pyproject.toml)
 ![Tests](https://img.shields.io/badge/tests-228%20passed-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-86%25-brightgreen)
-[![DOI](https://img.shields.io/badge/DOI-10.XXXX%2Fsoftx.2026.XXXXXX-blue)](https://doi.org/XXXX)
+[![DOI](https://img.shields.io/badge/DOI-XXXXXX-blue)](https://doi.org/XXXX)
 
 ---
 
